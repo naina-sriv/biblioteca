@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Librarywala</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .header {
+      background-color:#FCDDCC ; /* Changed to a uniform color */
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .header .logo {
+      font-size: 3em;
+      color: #fff;
+    }
+
+    .search-bar input {
+      width: 60%;
+      padding: 10px;
+      
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .navbar {
+      background-color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 1px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: #E53AA5; /* Uniform link color */
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #6E4555; /* Hover color */
+    }
+
+    .carousel {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .slider_container {
+      position: relative;
+      width: 100%;
+      height: 28rem;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .slider {
+      width: 400%;
+      display: flex;
+      animation: sliding 15s cubic-bezier(1, 0.95, 0.565, 1) infinite;
+    }
+
+    .slide {
+      min-width: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-around;
+      padding: 40px;
+      background-color: #F5E3E0; /* Uniform background color */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      margin: 20px;
+      border-radius: 10px;
+    }
+
+    .feature {
+      text-align: center;
+      width: 20%;
+      padding: 10px;
+    }
+
+    .feature i {
+      font-size: 2.5em;
+      color: #E53AA5; /* Uniform icon color */
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      color: #E53AA5; /* Uniform heading color */
+      font-size: 1.5em;
+    }
+
+    .feature p {
+      font-size: 1em;
+      color: #666; /* Uniform paragraph color */
+    }
+
+    @keyframes sliding {
+      0%, 20% { transform: translateX(0); }
+      25%, 45% { transform: translateX(-100%); }
+      50%, 70% { transform: translateX(-200%); }
+      75%, 95% { transform: translateX(-300%); }
+      100% { transform: translateX(-400%); }
+    }
+
+    .contact { 
+     color: black;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .contact h2 {
+      font-size: 2 em;
+      margin-bottom: 20px;
+      color: #E53AA5; /* Uniform heading color */
+    }
+
+    .contact form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact form input,
+    .contact form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    
+      border-radius: 5px;
+      background-color: #fff;
+      color: #333; 
+    }
+
+    .contact form button {
+      background-color: #DE5D83;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s ease;
+    }
+
+    .contact form button:hover {
+      background-color: #6E4555; /* Hover color */
+    }
+
+    .library-services-section {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      color: #333;
+    }
+
+    .library-services-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .library-services-section h1 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      color: #E53AA5; 
+    }
+
+    .library-services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .library-service {
+      flex: 1 1 30%;
+      max-width: 30%;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .library-service i {
+      font-size: 3em;
+      color: #DE5D83; 
+      margin-bottom: 10px;
+    }
+
+    .library-service h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #DE5D83; 
+    }
+
+    .library-service p {
+      font-size: 1em;
+      color: #666; 
+    }
+    @media (max-width: 768px) {
+      .library-service {
+        flex: 1 1 45%;
+        max-width: 45%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .library-service {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+    .video{
+      padding: 10px;
+      background-image: url("./video.png");
+      background-size: cover;
+      background-position:right;
+      background-size: contain;
+    }
+
+    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+
+    .price {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .pricing {
+      display: flex;
+      justify-content: center;
+      gap: 20px; /* Adds space between the plans */
+      flex-wrap: wrap;
+    }
+    
+    .plan {
+      background-color: #fff;
+      padding: 1.5rem;
+      margin: 10px;
+      border-radius: 5px;
+      text-align: center;
+      width: 25%; /* Adjust width to decrease the size */
+      min-width: 200px; /* Ensures the plans don't get too small */
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    
+    .plan h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    
+    .plan .price {
+      margin-bottom: 0.5rem;
+      font-size: 1.2em;
+    }
+    
+    .plan ul.features {
+      list-style-type: none;
+      padding: 0;
+      text-align: left;
+    }
+    
+    .plan ul.features li {
+      margin: 5px 0;
+      font-size: 0.9em;
+    }
+    
+    .plan button {
+      border: none;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #DE5D83;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    
+    .plan.popular {
+      border: 2px solid #DE5D83;
+      transform: scale(1.05);
+    }
+    
+    .plan.popular span {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #DE5D83;
+      color: #fff;
+      padding: 4px 15px;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+    
+    .plan:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+
+
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="./HEADER.png" width="100%" height="100%">
+    <div class="search-bar">
+      <input type="text" placeholder="I wish to read...">
+    </div>
+  </div>
+  <div class="navbar">
+    <a href="./listing.html">Listings</a>
+    <a href="#" target="_blank">Bucket</a>
+    <a href="/login.html" target="_blank">Login</a>
+    <a href="./signup1.html" target="_blank"">Sign up</a>
+    <a href="./playlist.html" target="_blank">Playlists</a>
+  </div>
+  <div class="carousel">
+    <section class="slider_container">
+      <section class="slider">
+        <div class="slide"><img src="./SLIDE1.png" alt="Slide 1"></div>
+        <div class="slide"><img src="./SLIE 2.png" alt="Slide 2"></div>
+        <div class="slide"><img src="./slide 3.png" alt="Slide 3"></div>
+        <div class="slide"><img src="./slide 4.png" alt="Slide 4"></div>
+      </section>
+    </section>
+  </div>
+  <div class="video">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/aFZl53BBm_Q?si=SxUXLaFjRGaMCEyo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+  <div class="features">
+    <div class="feature">
+      <i class="fas fa-truck"></i>
+      <h3>Collection</h3>
+      <p>A Brazen Collection To Choose From. Try Now</p>
+    </div>
+    <div class="feature" ><i class="fas fa-book"></i>
+      <h3>Convenience</h3>
+      <p>A Whole World At Your Door. Doorstep Delivery</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-rupee-sign"></i>
+      <h3>Cost</h3>
+      <p>Pocket Friendly Plans, Read Guilt Free</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-language"></i>
+      <h3>Choice</h3>
+      <p>Read In Your Mother Tongue. Books Available In Multiple Languages</p>
+    </div>
+  </div>
+  <div class="library-services-container">
+    <div>
+    <h1><center>Our website allows you to find the books you want to read.</center></h1>
+    <div class="library-services">
+      <div class="library-service">
+        <i class="fas fa-search"></i>
+        <h2>Search</h2>
+        <p>If you know what you're looking for, then use the search box to search by Title or Author.</p>
+      </div>
+      <div class="library-service">
+        <i class="fas fa-th-list"></i>
+        <h2>Genre Listing</h2>
+        <p>All our books are tagged by Genre. Take a look at our Genre listing and find your book.</p>
+      </div>
+      <div class="library-service">
+        <i class="fas fa-star"></i>
+        <h2>Librarian's Picks</h2>
+        <p>Our librarians are well-read and are constantly updating their reading choices. Look at their nominated favourites over here.</p>
+      </div>
+      <div class="library-service">
+        <i class="fas fa-plane"></i>
+        <h2>New Arrivals</h2>
+        <p>The New Arrivals section lists all the books that have just been added to the library. Find the latest literary sensation here.</p>
+      </div>
+      <div class="library-service">
+        <i class="fas fa-book"></i>
+        <h2>Recently Returned</h2>
+        <p>As the name suggests, this section lists the books that were just returned to the library. This is for when a book that you want is with someone else.</p>
+      </div>
+      <div class="library-service">
+        <i class="fas fa-list-ol"></i>
+        <h2>Most Popular</h2>
+        <p>The Most Popular list shows the books borrowed most number of times in the last 15 days. This is for when you just want to follow the herd.</p>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="price" style="background-color:#F5E3E0;">
+    <br>
+    <br>
+    <h1 class="h1-price">Choose the plan that fits your needs</h1>
+    <p class="p-price">Flexible plans for every book lover</p>
+    <div class="pricing">
+      <div class="plan">
+        <h2>BOOK WORM</h2>
+        <div class="price">Rs 150/month</div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> 3 books per month</li>
+          <li><i class="fas fa-check-circle"></i> 14 days return period</li>
+        </ul>
+        <button>Buy Now</button>
+      </div>
+      <div class="plan popular">
+        <span>Most Popular</span>
+        <h2>BOOK SERPENT</h2>
+        <div class="price">Rs. 200/month</div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> 5 books per month</li>
+          <li><i class="fas fa-check-circle"></i> 21 days return period</li>
+        </ul>
+        <button>Buy Now</button>
+      </div>
+      <div class="plan">
+        <h2>BOOK DRAGON</h2>
+        <div class="price">Rs.300/month</div>
+        <ul class="features">
+          <li><i class="fas fa-check-circle"></i> 7 books per month</li>
+          <li><i class="fas fa-check-circle"></i> 30 days return period</li>
+        </ul>
+        <button>Buy Now</button>
+      </div>
+    </div>
+  </div>
+  <div class="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+  
+</body>
+</html>
